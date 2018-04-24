@@ -1,0 +1,29 @@
+<div class="forms">
+  <div class="signIn">
+    <form [formGroup]="loginForm" (submit)="loginSubmit(loginForm)" novalidate>
+      <label>Email
+        <mat-form-field>
+          <input matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+      </label>
+      <div *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.touched">
+        You must fill out your email
+      </div>
+      
+      <label>Password
+        <mat-form-field>
+          <input matInput placeholder="password" formControlName="password">
+        </mat-form-field>
+      </label>
+      <div *ngIf="loginForm.controls.password.errors?.invalidPassword">
+        <!-- Invalid Password -->
+      </div>
+<!--     
+      <p>Form value: {{ loginForm.value | json }}</p>
+      <p>Form status: {{ loginForm.status | json }}</p>
+     -->
+      <button type="submit" >Login</button>
+    </form>
+  </div>
+</div>
+

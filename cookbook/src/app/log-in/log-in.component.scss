@@ -1,0 +1,12 @@
+.forms {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .signIn {
+        width: 50%;
+        margin: 10px;
+        padding: 10%;
+        background: #f5f5f5;
+    }
+}

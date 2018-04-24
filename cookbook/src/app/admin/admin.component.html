@@ -1,10 +1,11 @@
 
-<mat-toolbar>  
-  <mat-toolbar-row>
-    <button mat-button routerLink="my-profile">My Profile</button>
-    <button mat-button routerLink="my-recipes">My Recipes</button>
-    <button mat-button routerLink="my-favorites">My Favorites</button>
-  </mat-toolbar-row>
-</mat-toolbar>  
+  <mat-toolbar *ngIf="authService.isLoggedIn">
+    <button mat-button routerLink="my-profile" >My Profile</button>
+    <button mat-button routerLink="my-pieces">My Pieces</button>
+    <button mat-button routerLink="admit">Admit New Piece</button>
+    <button mat-button routerLink="service-chat">Service Chat</button>
+    <button mat-button routerLink="" (click)="authService.logout()">Logout</button>
+   </mat-toolbar>
+  <router-outlet></router-outlet>  
 
-<router-outlet></router-outlet>
+
