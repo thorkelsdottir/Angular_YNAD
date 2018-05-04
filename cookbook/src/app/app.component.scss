@@ -1,0 +1,35 @@
+.mat-toolbar {
+background: #FFFFFF;
+width: 100%;
+height: 100px;
+box-shadow: 0 2px 10px 0 rgba(176,186,197,0.20);
+.navbar-items {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+button {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14px;
+    color: #8091A5;
+    font-weight: 400;
+    letter-spacing: 1px;
+  } 
+button.btnLogIn {
+    border: 1px solid #DFE6EE;
+    color: #283849;
+    margin: 0 10px;
+    width: 240px;
+    height: 40px;
+    }
+button.btnSignUp {
+    background: #283849;
+    color: #fff;
+    margin: 0 10px;
+    width: 240px;
+    height: 40px;
+    border: #283849;
+    }
+}

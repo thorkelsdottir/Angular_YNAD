@@ -1,11 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar>
-  Logo
+  <div>Logo</div>
+  <div class="navbar-items"></div>
   <button mat-button routerLink="pieces" >Pieces</button>
   <button mat-button routerLink="creatives">Creatives</button>
   <button mat-button routerLink="about">About</button>
-  <button mat-button routerLink="log-in" *ngIf="!authService.isLoggedIn">Sign In </button>
-  <button mat-button routerLink="sign-up" *ngIf="!authService.isLoggedIn">Sign Up </button>
+  <button class="btnLogIn" routerLink="log-in" *ngIf="!authService.isLoggedIn">Log In </button>
+  <button class="btnSignUp" routerLink="sign-up" *ngIf="!authService.isLoggedIn">Sign Up </button>
   <button mat-button routerLink="admin" *ngIf="authService.isLoggedIn">Welcome User</button>
 </mat-toolbar>
 
