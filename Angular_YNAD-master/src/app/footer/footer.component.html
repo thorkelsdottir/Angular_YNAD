@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <div class="logo">
+    <button mat-button class="btnLogo" routerLink="pieces" ><img src="assets/logo/logo.svg"></button>
+  </div>
+  <div class="footer-nav">
+    <p>@ Young Nordic Creatives  2018</p>
+    <div class="footer-social-media">
+      <button mat-button class="btnNone" routerLink="about"><img src="assets/icon/facebook.svg"></button>
+      <button mat-button class="btnNone" routerLink="about"><img src="assets/icon/instagram.svg"></button>
+    </div>
+  </div>
+  <div class="footer-newsletter">
+    <h4>Sign up for our newsletter</h4>
+    <div>
+      <form [formGroup]="newsletterForm" (submit)="newsLetterSubmit(newsletterForm)" novalidate>
+          <input matInput placeholder="Your email" autocomplete="email" email formControlName="newsLetterMail">
+          <button mat-button class="btnDark" type="submit" >Submit</button>
+      </form>
+    </div>
+    
+  </div>
+</mat-toolbar>

@@ -1,0 +1,58 @@
+@import "../../styles.scss";
+.my-pieces-cards {
+  width: 90%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.piece-card {
+    width: 281px;
+    height: fit-content;
+    padding: 0;
+    margin-bottom: 26px; 
+    p {
+      font-size: 14px;
+    }
+    .piece-card-image1 {
+      background-image: url('../../assets/images/artp_image.png');
+      background-size: cover;
+      width: 100%;
+      height: 346px;
+    }
+    .piece-card-image2 {
+      background-image: url('../../assets/images/artp_image2.png');
+      background-size: cover;
+      width: 100%;
+      height: 280px;
+    }
+    .piece-card-image3 {
+      background-image: url('../../assets/images/artp_image3.png');
+      background-size: cover;
+      width: 100%;
+      height: 286px;
+    }
+    .piece-card-image4 {
+      background-image: url('../../assets/images/artp_image4.png');
+      background-size: cover;
+      width: 100%;
+      height: 395px;
+    }
+    .piece-card-content {
+      padding: 0 16px; 
+      .card-title-price {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        h3 {
+          font-size: 16px;
+          line-height: 1;
+        }
+      }
+      .card-line {
+        height: 1px;
+        width: 100%;
+        background-color: $lineBlue;
+      }
+    }
+  }
