@@ -11,7 +11,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 
 
@@ -31,6 +31,8 @@ import { UserServiceService } from './user-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { ChatService } from './chat.service';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -59,12 +61,14 @@ import { FooterComponent } from './footer/footer.component';
     MatToolbarModule,
     MatMenuModule,
     MatFormFieldModule,
+    FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
     HttpClientModule,
+    HttpModule,
     MatCardModule
   ],
-  providers: [AuthGuardService, AuthService, UserServiceService],
+  providers: [AuthGuardService, AuthService, UserServiceService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

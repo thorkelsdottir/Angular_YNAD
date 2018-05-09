@@ -1,3 +1,21 @@
-<p>
-  service-chat works!
-</p>
+<h1>Service Chat</h1>
+<!-- <p>{{messages.length}}</p>
+<p>{{messages[0].text}}</p> -->
+<!-- Display all. For loop - loop throught all elements
+Has to be in a div so angular know to reapeat each item in the list -->
+<div *ngFor="let message of chatService.messages">
+    <mat-card>
+      <div>{{message.owner}}</div>
+      <div>{{message.text}}</div>
+    </mat-card>
+</div>
+<mat-card>
+    <mat-form-field>
+      <input [(ngModel)]="message.owner" matInput type="text" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+        <textarea [(ngModel)]="message.text" matInput type="text" placeholder="Message"></textarea>
+    </mat-form-field>
+    <button (click)="post()"mat-button type="submit">Post</button>
+</mat-card>
+

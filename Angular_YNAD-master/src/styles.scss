@@ -93,7 +93,14 @@ p{
     color: $lightBlue;
     letter-spacing: 1px;
     text-align: center;
+    .mat-button-focus-overlay {
+        background-color:transparent;  
+    }
+    // .mat-button {
+    //     border-radius: 50% !important; 
+    //   }
 }
+
 .btnDark{
     background: $darkBlue;
     color: $white;
@@ -142,6 +149,7 @@ p{
 }
 .btnLogo{
     padding: 0;
+    outline: none;
 }
 .divWhiteBox{
     max-width: 1125px;
@@ -150,7 +158,13 @@ p{
 }
 .lineLeft{
     border-left: 1px solid $lightBlue;
+    border-radius: none;
 }
 .logo{
-    margin-left: 24px;
+    margin-left: 10px;
+    margin-top: 6px;
+    img {
+        width: 130px;
+    }
 }
+
