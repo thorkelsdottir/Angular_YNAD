@@ -3,7 +3,6 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PasswordValidator } from '../PasswordValidator';
-import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,9 +11,9 @@ import { UserServiceService } from '../user-service.service';
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
-  profileImageUrl = "http://placehold.it/180";
+  profileImageUrl = "/assets/icon/imagePlaceholder.jpg";
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private userService: UserServiceService) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
   };
 
   readUrl(event:any) {
@@ -25,13 +24,13 @@ export class SignUpComponent implements OnInit {
       }
       reader.readAsDataURL(event.target.files[0]);
     }
-  }
+  }s
 
   signUpSubmit(signUpForm) {
     console.log("is Valid?: " + signUpForm.valid);
     if (signUpForm.valid) {
       //Save user data via userServiceService      
-      this.userService.saveNewUser(signUpForm.value)
+      // this.userService.saveNewUser(signUpForm.value)
       // Send an http request to login
       // Navigate to the home page (or some other page)
       this.authService.login().subscribe(x => {
@@ -48,14 +47,14 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      phone_number: ['', Validators.required],
+      firstname: [''],
+      lastname: [''],
+      phone_number: [''],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      location: ['', Validators.required],
-      profession: ['', Validators.required],
-      description: ['', Validators.required],
+      location: [''],
+      profession: [''],
+      description: [''],
       facebook_url: [''],
       instagram_url: [''],
       twitter_url: [''],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  newsletterForm: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
-  constructor() { }
+  newsLetterSubmit(newsletterForm) {
+    console.log("mail: ", newsletterForm.value);
+  }
 
   ngOnInit() {
+    // Subscribe to newsletter
+    this.newsletterForm = this.fb.group({
+      newsLetterMail: ['']
+    });
   }
 
 }

@@ -1,29 +1,31 @@
-<div class="forms">
-  <div class="signIn">
-    <form [formGroup]="loginForm" (submit)="loginSubmit(loginForm)" novalidate>
-      <label>Email
-        <mat-form-field>
-          <input matInput placeholder="email" formControlName="email">
-        </mat-form-field>
-      </label>
-      <div *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.touched">
-        You must fill out your email
+<div class="forms" id="signIn">
+    <div class="signIn" id="formSignIn">
+      <div class="formSignIn__header">
+          <a href="/" class="formSignIn__header__close btnNone">close</a>
+          <div class="formSignIn__header__logo"></div>
+          <h2>Sign up to Young Nordic Artists & Designers</h2>
       </div>
-      
-      <label>Password
-        <mat-form-field>
-          <input matInput placeholder="password" formControlName="password">
-        </mat-form-field>
-      </label>
-      <div *ngIf="loginForm.controls.password.errors?.invalidPassword">
-        <!-- Invalid Password -->
-      </div>
-<!--     
-      <p>Form value: {{ loginForm.value | json }}</p>
-      <p>Form status: {{ loginForm.status | json }}</p>
-     -->
-      <button type="submit" >Login</button>
-    </form>
+      <form class="signInForm" [formGroup]="loginForm" (submit)="loginSubmit(loginForm)" novalidate>
+          <mat-form-field>
+            <input class="h5" matInput placeholder="email" formControlName="email">
+          </mat-form-field>
+          <!-- <div *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.touched">
+            You must fill out your email
+          </div> -->
+          <mat-form-field>
+            <input class="h5" matInput placeholder="password" formControlName="password">
+          </mat-form-field>
+        <!--     
+          <p>Form value: {{ loginForm.value | json }}</p>
+          <p>Form status: {{ loginForm.status | json }}</p>
+         -->
+          <button class="btnDark" type="submit" >Login</button>
+  
+      </form>
+    </div>
   </div>
-</div>
+  
+  
+
+
 
