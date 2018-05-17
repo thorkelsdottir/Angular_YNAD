@@ -1,0 +1,13 @@
+@import "../../styles.scss";
+
+.mat-toolbar, .admin-header {
+    width: 100%;
+    background: $darkBlue;
+    height: 60px;
+    .admin-navbar-items {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+    }
+}
+

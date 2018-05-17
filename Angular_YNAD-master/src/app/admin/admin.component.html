@@ -1,10 +1,19 @@
+  
+<section class="admin-header">
+  <div class="admin-headerToolbar">
+    <mat-toolbar *ngIf="authService.isLoggedIn" class="admin-navbar-items">
+      <button mat-button routerLink="my-profile" class="btnAdminDark" >My Profile</button>
+      <button mat-button routerLink="my-pieces" class="btnAdminDark">My Pieces</button>
+      <button mat-button routerLink="admit" class="btnAdminDark">Admit New Piece</button>
+      <button mat-button routerLink="" (click)="authService.logout()" class="btnAdminDark">Logout</button>
+      </mat-toolbar>
+    <router-outlet></router-outlet> 
+  </div>
+</section>
 
-  <mat-toolbar *ngIf="authService.isLoggedIn">
-    <button mat-button routerLink="my-profile" >My Profile</button>
-    <button mat-button routerLink="my-pieces">My Pieces</button>
-    <button mat-button routerLink="admit">Admit New Piece</button>
-    <button mat-button routerLink="" (click)="authService.logout()">Logout</button>
-   </mat-toolbar>
-  <router-outlet></router-outlet>  
+
+      
+
+
 
 

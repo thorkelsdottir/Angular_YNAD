@@ -33,7 +33,7 @@ $fontBlack: 900;
 h1{
     font-family: $fontTitilli;
     font-weight: $fontSemiBold;
-    font-size: 40px;
+    font-size: 30px;
     color: $darkBlue;
     letter-spacing: 0;
     line-height: 50px;
@@ -41,14 +41,14 @@ h1{
 h2{
     font-family: $fontTitilli;
     font-weight: $fontExtraLight;
-    font-size: 22px;
+    font-size: 20px;
     color: $grey;
     letter-spacing: 0;
 }
 h3{
     font-family: $fontTitilli;
     font-weight: $fontSemiBold;
-    font-size: 22px;
+    font-size: 20px;
     color: $darkBlue;
     letter-spacing: -0.41px;
     line-height: 50px;
@@ -56,7 +56,7 @@ h3{
 h4{
     font-family: $fontTitilli;
     font-weight: $fontSemiBold;
-    font-size: 16px;
+    font-size: 14px;
     color: $darkBlue;
     letter-spacing: 0;
 }
@@ -71,7 +71,7 @@ h5{
 p{
     font-family: $fontTitilli;
     font-weight: $fontLight;
-    font-size: 20px;
+    font-size: 18px;
     color: $black;
     letter-spacing: 0;
     line-height: 32px;
@@ -143,20 +143,28 @@ p{
     border: 1px solid $white;
     height: 50px;
 }
-.btnAdminDark{
+.btnAdminDark{    
     width: 219px;
     height: 60px;
+    line-height: 60px;
     font-family: $fontTitilli;
     font-weight: $fontSemiBold;
-    font-size: 12px;
+    font-size: 13px;
     color: $white;
     letter-spacing: 0;
     text-align: center;
+    text-decoration: none;
+    background-color: $darkBlue;
+    border-left: 1px solid $hoverBlue;
+    &:hover {
+        background-color: $hoverBlue;
+    }
 }
 .btnLogo{
     padding: 0;
     outline: none;
 }
+ 
 .divWhiteBox{
     max-width: 1125px;
     background: #FFFFFF;
@@ -164,7 +172,7 @@ p{
 }
 .lineLeft{
     border-left: 1px solid $lightBlue;
-    border-radius: none;
+    border-radius: unset;
 }
 .logo{
     margin-left: 10px;
