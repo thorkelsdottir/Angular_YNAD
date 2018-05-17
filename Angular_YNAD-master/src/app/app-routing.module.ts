@@ -8,7 +8,6 @@ import { CreativesComponent } from './creatives/creatives.component';
 import { AdminComponent } from './admin/admin.component';
 import { MyProfileComponent } from './admin/my-profile/my-profile.component';
 import { MyPiecesComponent } from './admin/my-pieces/my-pieces.component';
-import { ServiceChatComponent } from './admin/service-chat/service-chat.component';
 import { AuthGuardService } from './auth-guard.service';
 import { AdmitComponent } from './admin/admit/admit.component';
 import { HomeComponent } from './home/home.component';
@@ -26,8 +25,7 @@ const routes: Routes = [
   { path: 'admin', canActivate: [AuthGuardService], component: AdminComponent, children: [
     { path: 'my-profile', component: MyProfileComponent},
     { path: 'my-pieces', component: MyPiecesComponent},
-    { path: 'admit', component: AdmitComponent},
-    { path: 'service-chat', component: ServiceChatComponent}
+    { path: 'admit', component: AdmitComponent}
   ] }
 ];
 
