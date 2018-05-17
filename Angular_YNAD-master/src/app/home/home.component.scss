@@ -43,6 +43,10 @@
             position: absolute;
             top: -60px;
             left: 0;
+            .carouselTop {
+                margin-top: 40px;
+                width: 92%;
+            }
         }
         .front-new-pieces-info{
             margin-top: 110px;
@@ -93,6 +97,10 @@
                     width: 100%;
                     height: 700px;
                     margin-top: 10px;
+                    .carouselMiddle {
+                        width: 100%;
+                        margin: 0 auto;
+                    }
                 }
                 .front-artist-work-info{
                     margin-bottom: 70px;

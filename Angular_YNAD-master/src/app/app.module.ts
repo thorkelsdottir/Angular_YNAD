@@ -26,11 +26,12 @@ import { AdminComponent } from './admin/admin.component';
 import { MyProfileComponent } from './admin/my-profile/my-profile.component';
 import { MyPiecesComponent } from './admin/my-pieces/my-pieces.component';
 import { AdmitComponent } from './admin/admit/admit.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpModule } from '@angular/http';
 import { ServiceChatComponent } from './admin/service-chat/service-chat.component';
+import { UserServiceService } from './user-service.service';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import { ServiceChatComponent } from './admin/service-chat/service-chat.componen
     HomeComponent,
     FooterComponent,
     ServiceChatComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -64,10 +65,9 @@ import { ServiceChatComponent } from './admin/service-chat/service-chat.componen
     MatSelectModule,
     HttpClientModule,
     HttpModule,
-    MatCardModule
-  
+    MatCardModule  
   ],
-  providers: [AuthGuardService, AuthService],
+  providers: [AuthGuardService, AuthService, UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
