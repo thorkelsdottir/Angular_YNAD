@@ -11,7 +11,7 @@ import { MyPiecesComponent } from './admin/my-pieces/my-pieces.component';
 import { AuthGuardService } from './auth-guard.service';
 import { AdmitComponent } from './admin/admit/admit.component';
 import { HomeComponent } from './home/home.component';
-
+import { EditUserComponent } from './admin/my-profile/edit-user/edit-user.component';
 
 
 const routes: Routes = [
@@ -23,9 +23,11 @@ const routes: Routes = [
   { path: 'log-in', component: LogInComponent},
   { path: 'sign-up', component: SignUpComponent},
   { path: 'admin', canActivate: [AuthGuardService], component: AdminComponent, children: [
-    { path: 'my-profile', component: MyProfileComponent},
+    { path: 'my-profile', component: MyProfileComponent, children: [
+      { path: 'edit-user', component: EditUserComponent}
+    ] },
     { path: 'my-pieces', component: MyPiecesComponent},
-    { path: 'admit', component: AdmitComponent}
+    { path: 'admit', component: AdmitComponent},
   ] }
 ];
 

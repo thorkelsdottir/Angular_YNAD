@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 //INPUT FORM
 import {MatInputModule} from '@angular/material/input';
+
 //Material
 import {MatButtonModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -30,9 +31,12 @@ import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpModule } from '@angular/http';
-import { ServiceChatComponent } from './admin/service-chat/service-chat.component';
 import { UserServiceService } from './user-service.service';
-
+import { PiecesServiceService } from './pieces-service.service';
+import { CrudService } from './crud.service';
+import { EditUserComponent } from './admin/my-profile/edit-user/edit-user.component';
+import { SearchService } from './search.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,7 @@ import { UserServiceService } from './user-service.service';
     AdmitComponent,
     HomeComponent,
     FooterComponent,
-    ServiceChatComponent
+    EditUserComponent
     ],
   imports: [
     BrowserModule,
@@ -65,9 +69,10 @@ import { UserServiceService } from './user-service.service';
     MatSelectModule,
     HttpClientModule,
     HttpModule,
-    MatCardModule  
+    MatCardModule,
+    NgbModule.forRoot() 
   ],
-  providers: [AuthGuardService, AuthService, UserServiceService],
+  providers: [AuthGuardService, AuthService, UserServiceService, PiecesServiceService, CrudService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

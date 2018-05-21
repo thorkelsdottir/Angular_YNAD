@@ -23,17 +23,18 @@ db.connect(err => {
     console.log('Connected');
 })
 
-// //use the post method to get the sign-up data (a form always posts)
-// app.post("/save-new-user", function(req, res) {
-//     console.log(req);
-//     res.send('ok')
+
+// //read/select from database all users
+// db.query( 'SELECT * FROM users', (err, ajData ) =>{
+//     console.log(ajData);
 // })
 
-//read/select from database all users
-db.query( 'SELECT * FROM users', (err, ajData ) =>{
-    console.log(ajData[0].firstname);
-})
+// //read/select from database all PIECES
+// db.query( 'SELECT * FROM pieces', (err, ajData ) =>{
+//     console.log(ajData);
+// })
 
+// Add headers
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -52,49 +53,155 @@ app.use(function (req, res, next) {
     next() 
   }); 
 
-app.get("/api", (req, res)=> {
+//Getting data from users
+app.get("/user-api", (req, res)=> {
         // res.json([{id:1},{id:2}])
     var stmt = 'SELECT * FROM users';
     db.query(stmt, (err, ajData)=>{
-        console.log(ajData);
+        // console.log(ajData);
+        res.json(ajData);
+    });
+})
+
+//Getting data from pieces
+app.get("/pieces-api", (req, res)=> {
+    // res.json([{id:1},{id:2}])
+    var stmt = 'SELECT * FROM pieces';
+    db.query(stmt, (err, ajData)=>{
+        // console.log(ajData);
         res.json(ajData);
     });
 })
 
 
+//add a new user to database from sign up
+app.post("/save-user", function(req, res) {
+    try {
+         // console.log("nú loggast value-in:");
+            var user = req.fields
+            // console.log(user)
+
+            // Insert a user into database
+            var jUser = {
+                firstname: user.firstname,
+                lastname: user.lastname,
+                profession: user.password,
+                description: user.description,
+                email: user.email,
+                password: user.password,
+                profile_image: user.profile_image,
+                phone_number: user.phone_number,
+                instagram_url: user.instagram_url,
+                facebook_url: user.facebook_url,
+                twitter_url: user.twitter_url,
+                roles_idroles: 1,
+                location_idlocation: 2,
+                thread_idthread: null 
+            }
+
+            var stmt = 'INSERT INTO users SET ?'
+            db.query(stmt, jUser, (err, jData)=>{
+                // console.log(jData);
+                if(err) {
+                    throw error;
+                }
+                if(jData.affectedRows == 1){
+                    console.log('great, a new JSON user inserted');
+                    return res.send(jData)
+                }
+            })
+      } catch (error) {
+        console.log(error.message)
+      }
+})
+
+//add a new user to database from sign up
+app.post("/update-user", function(req, res) {
+    try {
+        var newUserInfo = req.fields
+        var firstname = newUserInfo.firstname
+        var lastname = newUserInfo.lastname
+        var email = newUserInfo.email
+        var phone_number = newUserInfo.phone_number
+        var description = newUserInfo.description
+        var idusers = 1;
+        var sNewUserInfo = [ firstname, lastname, email, phone_number, description, idusers]
+        var stmt = 'UPDATE users SET firstname = ?, lastname = ?, email = ?, phone_number = ?, description = ? WHERE idusers = ?' 
+            db.query(stmt, sNewUserInfo, (err, jData) => {
+                // console.log(jData);
+                if(err) {
+                    throw error;
+                }
+                if(jData.affectedRows == 1){
+                    console.log('a user has been updated');
+                }
+            })
+
+      } catch (error) {
+        console.log(error.message)
+      }
+})
 
 
-// //Insert a user into database
-// var jUser = {
-//     "firstname": 'Anne Mai',
-//     "lastname": 'Særker-Sørensen',
-//     "profession": 'Web Developer',
-//     "description": 'My name is Anne Mai and love the web',
-//     "password": '123',
-//     "profile_image": 'https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/c0.5.320.320/p320x320/18156901_10156189333629698_7999203246869048154_n.jpg?_nc_cat=0&oh=ea6744a58f846b3752644e176ea9c35a&oe=5B5F9343',
-//     "facebook_url": null,
-//     "twitter_url": 'https://www.linkedin.com/in/thorkelsdottir/',
-//     "phone_number": '004593845257',
-//     "instagram_url": 'https://www.instagram.com/katrinduasig/',
-//     "roles_idroles": 1,
-//     "location_idlocation": 2,
-//     "thread_idthread": null
-// }
-// var stmt = 'INSERT INTO users SET ?'
-// db.query(stmt, jUser, (err, jData)=>{
-//     console.log("uData",jData);
-//     if(jData.affectedRows == 1){
-//         console.log('great, JSON user inserted');
-//     }
-// })
+//add new piece to database from sign up
+app.post("/save-piece", function(req, res) {
+    try {
+         // console.log("nú loggast value-in:");
+            var piece = req.fields
+            console.log(piece)
+
+            // Insert a piece into database
+            var jPiece = {
+                title: piece.title,
+                material: piece.material,
+                description: piece.description,
+                size: piece.size,
+                price: piece.price,
+                status_idstatus: 1,
+                year_idyear: 4,
+                piece_image: piece.piece_image,
+                users_idusers: 5,
+                media_idmedia: 6 
+            }
+
+            var stmt = 'INSERT INTO pieces SET ?'
+            db.query(stmt, jPiece, (err, jData)=>{
+                console.log(jData);
+                if(err) {
+                    throw error;
+                }
+                if(jData.affectedRows == 1){
+                    console.log('great, a new JSON piece inserted');
+                    return res.send(jData)
+                }
+            })
+      } catch (error) {
+        console.log(error.message)
+      }
+})
+
+////delete from database
+app.get('/delete-from-api/:idpieces', (req, res)=> {
+    // console.log(req.params.idpieces)
+    var idpieces = req.params.idpieces;
+    var stmt = 'DELETE FROM pieces WHERE idpieces = ?'
+    db.query(stmt, idpieces, (err, ajData) => {
+        res.send(ajData)
+        // if(jData.affectedRows == 1){
+        //     console.log('deleted');
+        //     //should be a reload here
+        // }
+    } ) 
+})
+
 
 
 //Listening to port
-var port = 1982
+var port = 1983
 app.listen(port, err => {
     if(err) {
         console.log("error");
         return
     }
-    console.log("server is running on port 1982");
+    console.log("server is running on port 1983");
 })

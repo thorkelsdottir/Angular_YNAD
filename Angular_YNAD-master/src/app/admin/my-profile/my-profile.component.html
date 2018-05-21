@@ -19,15 +19,21 @@
               <div class="user-email-phone">
                   <div class="user-email">
                       <img src="/assets/icon/email.svg" alt="email">
-                      <a class="p" href="mailto:{{user.email}}">minerva@gmail.com</a>
+                      <a class="p" href="mailto:{{user.email}}">{{user.email}}</a>
                   </div>
                   <div class="user-phone">
                       <img src="/assets/icon/phone.svg" alt="phone">
-                      <a class="p" href="tel:{{user.phone_number}}">+45 93845259</a>
+                      <a class="p" href="tel:{{user.phone_number}}">{{user.phone_number}}</a>
                   </div>
               </div>
-              <button href="/admin-edit-profile" class="btnLight">Edit Profile</button>
+                <div *ngIf="authService.isLoggedIn" >
+                    <button mat-button routerLink="edit-user" class="btnAdminDark" type="button">Edit Profile</button>
+                </div>
           </div>
       </div>
   </div>
 </section>
+<!-- <app-edit-user [data]="user"></app-edit-user> -->
+<router-outlet></router-outlet> 
+
+

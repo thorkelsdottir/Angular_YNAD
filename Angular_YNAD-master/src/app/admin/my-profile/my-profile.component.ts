@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserServiceService } from '../../user-service.service';
+import { CrudService } from '../../crud.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -9,15 +11,16 @@ import { UserServiceService } from '../../user-service.service';
 export class MyProfileComponent implements OnInit {
   user = {}
   
-  constructor(private userservice: UserServiceService ) { }
+
+  constructor(private authService: AuthService, private userservice: UserServiceService, private crudservice: CrudService ) { }
+
 
   ngOnInit() {
     this.userservice.displayAllUsers().subscribe(data => {
        this.user  = data[0];
       // console.log(data[0]);
+      
     });
   }
-
- 
 
 }

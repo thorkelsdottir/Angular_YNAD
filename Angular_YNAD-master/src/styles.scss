@@ -15,6 +15,7 @@ $inputText: #B2B2B2;
 $statusApproved: #73AD21;
 $statusPending: #e0d612;
 $statusDenied: #ad2121;
+$btnDelete: #ff5b4f;
 /* *** *** *** Font *** *** *** */
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:200,300,300i,400,600,700,900');
 $fontTitilli: 'Titillium Web', sans-serif;
@@ -119,6 +120,36 @@ p{
     text-align: center;
     height: 40px;
     width: 140px;
+}
+.btnDelete{
+    background: $btnDelete;
+    color: $white;
+    text-transform: uppercase;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $white;
+    letter-spacing: 0;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    outline: none;
+}
+.btnDeleteLarge {
+    width: 140px;
+}
+.btnEdit {
+    background:green;
+    color: $white;
+    text-transform: uppercase;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $white;
+    letter-spacing: 0;
+    text-align: center;
+    height: 40px;
+    width: 40px;
 }
 .btnLight{
     border: 1px solid $lightGrey;

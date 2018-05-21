@@ -1,0 +1,35 @@
+<div class="forms" id="editUser">
+    <div class="editUser" id="formEditUser">
+      <div class="formEditUser__header">
+          <a href="/" class="formEditUser__header__close btnNone">close</a>
+          <h2>Edit your profile information here</h2>
+      </div>
+      <form class="editUserForm" [formGroup]="editUserForm" (submit)="editUser(editUserForm)">
+          <div class="signUpTwoInLine">
+              <mat-form-field class="seperated">
+                  <input class="h5" matInput placeholder="Enter Firstname" autocomplete="name" formControlName="firstname" value="userdata">
+                </mat-form-field>
+                <mat-form-field class="seperated">
+                  <input class="h5" matInput placeholder="Enter Lastname" autocomplete="name" formControlName="lastname">
+                </mat-form-field>
+          </div>
+            <mat-form-field>
+              <input class="h5" matInput placeholder="Enter email" autocomplete="email" email formControlName="email">
+            </mat-form-field>
+               
+            <mat-form-field>
+              <input class="h5" matInput placeholder="Enter Phone Number" autocomplete="tel" formControlName="phone_number">
+            </mat-form-field>
+         
+            <mat-form-field>
+              <textarea class="h5" matInput id="" cols="30" rows="10" placeholder="Tell a little about yourself" autocomplete="" formControlName="description"></textarea>
+            </mat-form-field>
+         
+            <div  *ngIf="authService.isLoggedIn" >
+                <button class="btnDark">Submit Changes</button>
+            </div>             
+      </form>
+    </div>
+  </div>
+  
+  

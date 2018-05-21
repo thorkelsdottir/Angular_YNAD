@@ -1,3 +1,111 @@
-<p>
-  my-pieces works!
-</p>
+<section class="my-pieces-table">
+
+    <div class="my-pieces-search">
+        <!-- <input placeholder="What are you looking for?" type="text"> -->
+
+        <input placeholder="What are you looking for?" (keyup)="searchTerm$.next($event.target.value)">
+            <ul *ngIf="results">
+            <li *ngFor="let result of results | slice:0:9">
+                <a href="{{ result.latest }}" target="_blank">
+                {{ result.name }}
+                </a>
+            </li>
+            </ul>
+
+    </div>
+
+    <div class="pieces-table">
+        <table>
+            <tr>
+                <th>
+                    <h5>Piece Image</h5>
+                </th>
+                <th>
+                    <h5>Title</h5>
+                </th>
+                <th>
+                    <h5>Description</h5>
+                </th>
+                <th>
+                    <h5>Media</h5>
+                </th>
+                <th>
+                    <h5>Marterial</h5>
+                </th>
+                <th>
+                    <h5>Year</h5>
+                </th>
+                <th>
+                    <h5>Size</h5>
+                </th>
+                <th>
+                    <h5>Price</h5>
+                </th>
+                <th>
+                    <h5>Status</h5>
+                </th>
+                <th>
+                    <h5>Delete</h5>
+                </th>
+            </tr>
+            <tr  *ngFor="let piece of pieces">
+                <td>
+                    <div class="piece-thumbnail">
+                        <img src="{{piece.piece_image}}">
+                    </div>
+                </td>
+                <td>
+                    <p>{{piece.title}}</p>
+                </td>
+                <td>
+                    <p>{{piece.description}}</p>
+                </td>
+                <td>
+                    <p>Film</p>
+                </td>
+                <td>
+                    <p>{{piece.material}}</p>
+                </td>
+                <td>
+                    <p>2016</p>
+                </td>
+                <td>
+                    <p>{{piece.size}}</p>
+                </td>
+                <td>
+                    <p>{{piece.price}}</p>
+                </td>
+                <td>
+                    <div class="pieces-status">
+                        <p>Pending</p>
+                        <div class="status pending"></div>
+                    </div>
+                </td>
+                <td>
+                        <ng-template #content let-c="close" let-d="dismiss">
+                            <div class="deleteModal">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Modal title</h4>
+                                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete this piece?&hellip;</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btnDark btn btn-outline-dark" (click)="c('Close click')">Cancel</button>
+                                        <button class="btnDelete btnDeleteLarge" type="button" (click)="deletePiece(piece.idpieces)">YES</button>
+                                    </div>
+                            </div>
+                         
+                        </ng-template>
+                        
+                        <button class="btnDelete" (click)="open(content)">X</button>
+                        
+                </td>
+            </tr>
+          
+        </table>
+    </div>
+  </section>

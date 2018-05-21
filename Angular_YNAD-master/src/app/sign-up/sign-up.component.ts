@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PasswordValidator } from '../PasswordValidator';
+import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,7 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   profileImageUrl = "/assets/icon/imagePlaceholder.jpg";
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private crudService: CrudService ) {
   };
 
   readUrl(event:any) {
@@ -27,22 +28,21 @@ export class SignUpComponent implements OnInit {
   }s
 
   signUpSubmit(signUpForm) {
-    console.log("is Valid?: " + signUpForm.valid);
+    // console.log("is Valid?: " + signUpForm.valid);
     if (signUpForm.valid) {
       //Save user data via userServiceService      
-      // this.userService.saveNewUser(signUpForm.value)
+      this.crudService.saveNewUser(signUpForm.value)
       // Send an http request to login
       // Navigate to the home page (or some other page)
       this.authService.login().subscribe(x => {
         // Can you naviate to the path the user tried to go to instead of 
         // always the contact?
-        this.router.navigate(['admin']);
+        this.router.navigate(['log-in']);
       });
-      //console.log(this.signUpForm.value);
+      console.log(this.signUpForm.value);
     } else {
       // Display error messages.
     }
-    console.log("Hi there!");
    }
 
   ngOnInit() {
