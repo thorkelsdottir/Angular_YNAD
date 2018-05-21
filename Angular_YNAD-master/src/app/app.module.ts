@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 
 //Material
-import {MatButtonModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatSelectModule, MatDialog, MatDialogRef, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MAT_DIALOG_DATA} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +37,7 @@ import { CrudService } from './crud.service';
 import { EditUserComponent } from './admin/my-profile/edit-user/edit-user.component';
 import { SearchService } from './search.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { DeletePieceModalComponent, ModalOverlay } from './admin/my-pieces/delete-piece-modal/delete-piece-modal.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +53,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AdmitComponent,
     HomeComponent,
     FooterComponent,
-    EditUserComponent
-    ],
+    EditUserComponent,
+    DeletePieceModalComponent,
+    ModalOverlay
+      ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -70,9 +73,21 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     HttpModule,
     MatCardModule,
-    NgbModule.forRoot() 
+    NgbModule.forRoot(), 
+    MatDialogModule
+      ],
+  entryComponents: [ModalOverlay],
+  providers: [
+    AuthGuardService, 
+    AuthService, 
+    UserServiceService, 
+    PiecesServiceService, 
+    CrudService, 
+    SearchService, 
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    {provide: MAT_DIALOG_DATA, useValue: {}}, 
+    {provide: MatDialogRef, useValue: {}}
   ],
-  providers: [AuthGuardService, AuthService, UserServiceService, PiecesServiceService, CrudService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

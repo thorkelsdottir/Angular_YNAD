@@ -1,0 +1,10 @@
+<div class="deleteModal">
+    <div class="modal-header">
+        <h4 class="modal-title">Are you sure you want to delete {{data.title}}?</h4>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btnDark btn btn-outline-dark" (click)="onNoClick()">Cancel</button>
+        <button class="btnDelete btnDeleteLarge" type="button" [mat-dialog-close]="" (click)="deletePiece(data.idpieces)">YES</button>
+    </div>
+</div>
+        

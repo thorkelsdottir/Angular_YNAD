@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { CrudService } from '../../../crud.service';
 import { AuthService } from '../../../auth.service';
+import { UserServiceService } from '../../../user-service.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -10,11 +11,9 @@ import { AuthService } from '../../../auth.service';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
-  
-  // @Input() data:  any;
-
+  user = {}
   editUserForm: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router, private crudService: CrudService, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private userservice: UserServiceService,  private router: Router, private crudService: CrudService, private authService: AuthService) { }
 
    editUser(editUserForm) {
     console.log("is Valid?: " + editUserForm.valid);
@@ -39,7 +38,9 @@ export class EditUserComponent implements OnInit {
       description: ['']
     });
     // console.log(this.userdata);
-    
+    this.userservice.displayAllUsers().subscribe(data => {
+      this.user  = data[0];      
+   });
   }
 }
 
