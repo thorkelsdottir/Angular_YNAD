@@ -1,7 +1,7 @@
 <div class="forms" id="editUser">
     <div class="editUser" id="formEditUser">
       <div class="formEditUser__header">
-          <a href="/" class="formEditUser__header__close btnNone">close</a>
+          <a routerLink="/admin/my-profile" class="formEditUser__header__close btnNone">close</a>
           <h2>Edit your profile information here</h2>
       </div>
       <form class="editUserForm" [formGroup]="editUserForm" (submit)="editUser(editUserForm)">

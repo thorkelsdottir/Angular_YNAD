@@ -58,19 +58,30 @@ app.get("/user-api", (req, res)=> {
         // res.json([{id:1},{id:2}])
     var stmt = 'SELECT * FROM users';
     db.query(stmt, (err, ajData)=>{
-        // console.log(ajData);
-        res.json(ajData);
+        // console.log(ajData); 
+        if (err) {
+                // console.log(err);
+                return res.json(err);
+            }
+        return res.json(ajData);
     });
 })
 
 //Getting data from pieces
 app.get("/pieces-api", (req, res)=> {
-    // res.json([{id:1},{id:2}])
-    var stmt = 'SELECT * FROM pieces';
-    db.query(stmt, (err, ajData)=>{
-        // console.log(ajData);
-        res.json(ajData);
-    });
+    try{
+        var stmt = 'SELECT * FROM pieces';
+        db.query(stmt, (err, ajData)=>{
+            if (err) {
+                // console.log(err);
+                return res.json(err);
+            }
+            return res.send(ajData);
+        });
+    } catch(err) {
+        console.log(err.message);
+    }
+    
 })
 
 
@@ -103,7 +114,7 @@ app.post("/save-user", function(req, res) {
             db.query(stmt, jUser, (err, jData)=>{
                 // console.log(jData);
                 if(err) {
-                    throw error;
+                    return res.send(err);
                 }
                 if(jData.affectedRows == 1){
                     console.log('great, a new JSON user inserted');
@@ -130,10 +141,11 @@ app.post("/update-user", function(req, res) {
             db.query(stmt, sNewUserInfo, (err, jData) => {
                 // console.log(jData);
                 if(err) {
-                    throw error;
+                    return res.send(err);
                 }
                 if(jData.affectedRows == 1){
                     console.log('a user has been updated');
+                    return res.send('success')
                 }
             })
 
@@ -168,7 +180,7 @@ app.post("/save-piece", function(req, res) {
             db.query(stmt, jPiece, (err, jData)=>{
                 console.log(jData);
                 if(err) {
-                    throw error;
+                    return res.send(err);
                 }
                 if(jData.affectedRows == 1){
                     console.log('great, a new JSON piece inserted');
@@ -180,18 +192,18 @@ app.post("/save-piece", function(req, res) {
       }
 })
 
-////delete from database
+////delete piece from database
 app.get('/delete-from-api/:idpieces', (req, res)=> {
     // console.log(req.params.idpieces)
     var idpieces = req.params.idpieces;
     var stmt = 'DELETE FROM pieces WHERE idpieces = ?'
     db.query(stmt, idpieces, (err, ajData) => {
-        res.send(ajData)
+        return res.send(ajData)
         // if(jData.affectedRows == 1){
         //     console.log('deleted');
         //     //should be a reload here
         // }
-    } ) 
+    }) 
 })
 
 
@@ -201,7 +213,7 @@ var port = 1983
 app.listen(port, err => {
     if(err) {
         console.log("error");
-        return
+        return false
     }
     console.log("server is running on port 1983");
 })

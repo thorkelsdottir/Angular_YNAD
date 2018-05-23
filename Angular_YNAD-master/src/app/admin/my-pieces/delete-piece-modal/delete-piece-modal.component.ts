@@ -3,6 +3,9 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { CrudService } from '../../../crud.service';
 import { PiecesServiceService } from '../../../pieces-service.service';
 import { Subject } from 'rxjs/Subject';
+import { UsersActions } from '../../../users.actions';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../../../store/store';
 /**
  * @title Dialog Overview
  */
@@ -14,7 +17,7 @@ import { Subject } from 'rxjs/Subject';
 export class DeletePieceModalComponent {
   @Input() data: any;
   pieces = [];
-  constructor(public dialog: MatDialog, private pieceservice: PiecesServiceService) {}
+  constructor(public dialog: MatDialog, private pieceservice: PiecesServiceService, private usersActions: UsersActions, private ngRedux: NgRedux<IAppState>) {}
 
   openDialog(data): void {
     // console.log('x');
@@ -24,14 +27,8 @@ export class DeletePieceModalComponent {
     });
   }
   ngOnInit() {
-    // console.log(this.data);
-        this.pieceservice.displayAllPieces().subscribe(data => {
-          this.pieces  = data;
-        return data;
-      });
     }
 }
-
 @Component({
   selector: 'modal-overlay',
   templateUrl: 'modal-overlay.html',
@@ -41,16 +38,17 @@ export class DeletePieceModalComponent {
 export class ModalOverlay {
   constructor(
     public dialogRef: MatDialogRef<ModalOverlay>,
-    @Inject(MAT_DIALOG_DATA) public data: any,  private crudservice: CrudService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,  private crudservice: CrudService, private usersActions: UsersActions) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+
   deletePiece(idpieces) {
     console.log(idpieces);
-    this.crudservice.deletePiece(idpieces).subscribe(res => {
-    });
+    this.usersActions.deletePiece(idpieces);
+    this.dialogRef.close();
   }
 }
 

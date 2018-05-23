@@ -17,7 +17,7 @@ export class LogInComponent implements OnInit {
   };
 
   loginSubmit(loginForm) {
-    console.log("is Valid?: " + loginForm.valid);
+    // console.log("is Valid?: " + loginForm.valid);
 
     if (loginForm.valid) {
       // Send an http request to login
@@ -31,7 +31,7 @@ export class LogInComponent implements OnInit {
     } else {
       // Display error messages.
     }
-    console.log("Hi there!");
+    // console.log("Hi there!");
    }
 
   ngOnInit() {

@@ -38,6 +38,15 @@ import { EditUserComponent } from './admin/my-profile/edit-user/edit-user.compon
 import { SearchService } from './search.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DeletePieceModalComponent, ModalOverlay } from './admin/my-pieces/delete-piece-modal/delete-piece-modal.component';
+import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
+import { IAppState, rootReducer } from './store/store';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { UsersActions } from './users.actions';
+import { RouterModule } from '@angular/router';
+import { UsersEpic } from './users.epic';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import { createLogger } from 'redux-logger';
+
 
 @NgModule({
   declarations: [
@@ -74,8 +83,10 @@ import { DeletePieceModalComponent, ModalOverlay } from './admin/my-pieces/delet
     HttpModule,
     MatCardModule,
     NgbModule.forRoot(), 
-    MatDialogModule
-      ],
+    MatDialogModule,
+    NgReduxModule,
+    NgReduxRouterModule.forRoot()
+        ],
   entryComponents: [ModalOverlay],
   providers: [
     AuthGuardService, 
@@ -83,12 +94,32 @@ import { DeletePieceModalComponent, ModalOverlay } from './admin/my-pieces/delet
     UserServiceService, 
     PiecesServiceService, 
     CrudService, 
-    SearchService, 
+    SearchService,
+    UsersActions,
+    UsersEpic, 
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: {}}, 
     {provide: MatDialogRef, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private devTool: DevToolsExtension,
+    private ngReduxRouter: NgReduxRouter,
+    private usersEpic: UsersEpic
+  ) {
+    const rootEpic = combineEpics( 
+      this.usersEpic.getAllPieces,
+      this.usersEpic.deleteFromPieces
+    );
+    const middleware = [
+      createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
+    ];
+    this.ngRedux.configureStore(rootReducer,
+      {}, middleware, [devTool.isEnabled() ? devTool.enhancer() : f => f]);
+  }
+
+}
 

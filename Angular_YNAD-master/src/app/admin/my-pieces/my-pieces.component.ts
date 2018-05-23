@@ -7,6 +7,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { UsersActions } from '../../users.actions';
+import { Subscription } from 'rxjs';
+import { IAppState } from '../../store/store';
+import { NgRedux } from '@angular-redux/store';
 
 
 @Component({
@@ -16,25 +20,18 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class MyPiecesComponent implements OnInit {
 
-  pieces = [];
-  constructor(public dialog: MatDialog, private router: Router, private pieceservice: PiecesServiceService, private crudservice: CrudService, private searchService: SearchService, private modalService: NgbModal ) { }
+  subscription: Subscription;
+  pieces: any[];
+  constructor(private usersAction: UsersActions, private ngRedux: NgRedux<IAppState>, public dialog: MatDialog, private router: Router, private pieceservice: PiecesServiceService, private crudservice: CrudService, private searchService: SearchService, private modalService: NgbModal ) { }
 
-
-  // deletePiece(idpieces) {
-  //   this.crudservice.deletePiece(idpieces).subscribe(res => {
-  //   });
-  //   // this.router.navigate(['/admin/my-pieces']);
-  // }
-  // open(content) {
-  //   this.modalService.open(content).result.then((result) => {
-  //   });
-  // }
-  
   ngOnInit() {
-    this.pieceservice.displayAllPieces().subscribe(data => {
-       this.pieces  = data;
-      return data;
-    });
+    this.usersAction.getAllPieces();
+    this.subscription = this.ngRedux.select(state => state.users).subscribe(users => {
+      // console.log(piece);
+      this.pieces = users.piece;
+      console.log(this.pieces);
+      
+    })
   }
 
 

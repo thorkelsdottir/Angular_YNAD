@@ -13,9 +13,9 @@ export class AuthService {
 
   login(): Observable<boolean> {
     // dummy implementation to set the user to be logged in.
-    console.log("login called");
+    // console.log("login called");
     return Observable.of(true).delay(1000).do(val => {
-      console.log("changed it to true");
+      // console.log("changed it to true");
       this.isLoggedIn = true;
     });
   }

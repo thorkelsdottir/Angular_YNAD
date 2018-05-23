@@ -29,9 +29,7 @@ export class CrudService {
   deletePiece(idpieces) {
     // console.log("clicking delete piece");
     const url ='http://localhost:1983/delete-from-api/' + idpieces;
-    return this.http.get(url).map(res => {
-      return res;
-    });
+    return this.http.get(url);
   }
 
 }
