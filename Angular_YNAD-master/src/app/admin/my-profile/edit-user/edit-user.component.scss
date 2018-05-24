@@ -2,11 +2,11 @@
 #editUser{
     width: 100%;
     background-color: rgba($darkBlue, 0.5);
-    padding-bottom: 85px;
+    padding-bottom: 278px;
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 100px;
+    top: 0;
 }
 
 #formEditUser{
@@ -15,7 +15,7 @@
     background-color: $white;
     .formEditUser__header{
         width: 100%;
-        height: 135px;
+        height: 85px;
         padding-top: 30px;
         background-color: #F9FDFF;
         position: relative;

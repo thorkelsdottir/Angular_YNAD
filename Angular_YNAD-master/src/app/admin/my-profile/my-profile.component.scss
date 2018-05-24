@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 .admin-my-profile{
     width: 100vw;
-    background: $admin;
+    background-image: url('/assets/background/pieces.png');
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 100px;
@@ -56,12 +56,15 @@
                 .front-artist-images{
                     width: 800px;
                     height: 504px;
-                    background-image: url('/assets/artists/birna_user.jpg');
                     background-repeat: no-repeat;
                     background-size: cover;
                     position: absolute;
+                    overflow: hidden;
                     top: - 40px;
                     right: -160px;
+                    img {
+                        width: 100%;
+                    }
                 }
             }
             

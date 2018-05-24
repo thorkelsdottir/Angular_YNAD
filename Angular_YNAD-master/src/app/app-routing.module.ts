@@ -12,6 +12,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { AdmitComponent } from './admin/admit/admit.component';
 import { HomeComponent } from './home/home.component';
 import { EditUserComponent } from './admin/my-profile/edit-user/edit-user.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 
 const routes: Routes = [
@@ -23,11 +24,13 @@ const routes: Routes = [
   { path: 'log-in', component: LogInComponent},
   { path: 'sign-up', component: SignUpComponent},
   { path: 'admin', canActivate: [AuthGuardService], component: AdminComponent, children: [
+    { path: '', redirectTo: 'my-profile',  pathMatch: 'full' },
     { path: 'my-profile', component: MyProfileComponent, children: [
       { path: 'edit-user', component: EditUserComponent}
     ] },
     { path: 'my-pieces', component: MyPiecesComponent},
     { path: 'admit', component: AdmitComponent},
+    { path: 'all-users', component: AllUsersComponent},
   ] }
 ];
 

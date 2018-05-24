@@ -1,5 +1,8 @@
 <section class="my-pieces-table">
-
+        <div class="piece-search">
+                <h2>Search through your pieces</h2>
+              <input id="myPieceSearchInput" type="text" placeholder="Search for piece" >
+            </div>
     <div class="pieces-table">
         <table>
             <tr>
@@ -68,27 +71,8 @@
                     </div>
                 </td>
                 <td>
-                        <!-- <ng-template #content let-c="close" let-d="dismiss">
-                            <div class="deleteModal">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Modal title</h4>
-                                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Are you sure you want to delete this piece?&hellip;</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btnDark btn btn-outline-dark" (click)="c('Close click')">Cancel</button>
-                                        <button class="btnDelete btnDeleteLarge" type="button" (click)="deletePiece(piece.idpieces)">YES</button>
-                                    </div>
-                            </div>
-                         
-                        </ng-template>
-                         -->
-                        <!-- <button class="btnDelete" (click)="open(content)">X</button> -->
-                        <app-delete-piece-modal [data]="piece"></app-delete-piece-modal>
+    
+                <app-delete-piece-modal [data]="piece"></app-delete-piece-modal>
 
                 </td>
             </tr>

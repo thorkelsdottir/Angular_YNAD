@@ -46,6 +46,8 @@ import { RouterModule } from '@angular/router';
 import { UsersEpic } from './users.epic';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { createLogger } from 'redux-logger';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { FilterArrayPipe } from './admin/all-users/filter.pipe';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { createLogger } from 'redux-logger';
     FooterComponent,
     EditUserComponent,
     DeletePieceModalComponent,
-    ModalOverlay
+    ModalOverlay,
+    AllUsersComponent,
+    FilterArrayPipe
       ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
-<div class="forms" id="signUp">
+<div class="forms overlay" id="signUp">
     <div class="signUp" id="formSignUp">
       <div class="formSignUp__header">
-          <a href="/" class="formSignUp__header__close btnNone">close</a>
+          <a routerLink="/" class="formSignUp__header__close btnNone">close</a>
           <div class="formSignUp__header__logo"></div>
           <h2>Sign up to Young Nordic Artists & Designers</h2>
       </div>
@@ -25,13 +25,7 @@
               <input class="h5" matInput placeholder="Enter Password" autocomplete="new-password" formControlName="password">
             </mat-form-field>
         
-            <mat-form-field>
-                <mat-select class="h5" placeholder="Select" formControlName="location">
-                    <mat-option value="option">Option</mat-option>
-                  </mat-select>
-            </mat-form-field>
-         
-    
+      
             <mat-form-field>
               <input class="h5" matInput placeholder="Enter Phone Number" autocomplete="tel" formControlName="phone_number">
             </mat-form-field>
@@ -40,7 +34,6 @@
             <mat-form-field>
               <input class="h5" matInput placeholder="Enter Profession" formControlName="profession">
             </mat-form-field>
-         
   
             <mat-form-field>
               <textarea class="h5" matInput id="" cols="30" rows="10" placeholder="Tell a little about yourself" autocomplete="" formControlName="description"></textarea>
@@ -55,16 +48,17 @@
             <mat-form-field>
               <input class="h5" matInput placeholder="Enter facebook url" formControlName="facebook_url">
             </mat-form-field>
-          
 
             <mat-form-field>
               <input class="h5" matInput placeholder="Enter twitter url" formControlName="twitter_url">
             </mat-form-field>
-        
+
+            <mat-form-field>
+                <input class="h5" matInput placeholder="Enter profile image url" formControlName="profileimage">
+              </mat-form-field>
             
-            <input class="custom-file-input" type='file' (change)="readUrl($event)" formControlName="profileimage"> 
+            <input class="custom-file-inputSignUp" type='file' (change)="readUrl($event)"> 
             <img class="user_image_upload" [src]="profileImageUrl" alt="your image">
-          
    
         <!--  <p>Form value: {{ signUpForm.value | json }}</p>
               <p>Form status: {{ signUpForm.status | json }}</p>  -->

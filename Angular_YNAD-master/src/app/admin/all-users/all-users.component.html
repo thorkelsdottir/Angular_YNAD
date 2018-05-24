@@ -1,0 +1,20 @@
+<section class="all-users">
+  <div class="name-search">
+      <h2>Search through all our creatives</h2>
+    <input id="myUserSearchInput" type="text" [(ngModel)]="filterName" placeholder="Search for first name" >
+    <div class="name-not-found" *ngIf="(users | filter: filterName) ?.length== 0">
+      <p>No Result found <br> Please check spelling or try different keywords.</p>
+    </div>
+  </div>
+  <div class="user-list">
+    <div *ngFor="let user of users | filter: filterName" class="eachUser divWhiteBox">
+      <h3>{{user.firstname}} {{user.lastname}}</h3>
+      <p>{{user.email}}</p>
+      <p>Phone number: {{user.phone_number}}</p>
+      <!-- <p >{{user.description}}</p> -->
+      <p>Social Media</p>
+        <a href="{{user.facebook_url}}"><img src="assets/icon/facebook.svg" alt="facebook"></a> 
+        <a href="{{user.twitter_url}}"><img src="assets/icon/instagram.svg" alt="instagram"></a>
+    </div>
+  </div>
+</section>

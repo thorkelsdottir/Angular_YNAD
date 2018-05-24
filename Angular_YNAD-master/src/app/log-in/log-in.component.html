@@ -1,11 +1,11 @@
-<div class="forms" id="signIn">
-    <div class="signIn" id="formSignIn">
-      <div class="formSignIn__header">
-          <a href="/" class="formSignIn__header__close btnNone">close</a>
-          <div class="formSignIn__header__logo"></div>
+<div class="forms overlay" id="logIn">
+    <div class="logIn" id="formLogIn">
+      <div class="formLogIn__header">
+          <a routerLink="/" class="formLogIn__header__close btnNone">close</a>
+          <div class="formLogIn__header__logo"></div>
           <h2>Sign up to Young Nordic Artists & Designers</h2>
       </div>
-      <form class="signInForm" [formGroup]="loginForm" (submit)="loginSubmit(loginForm)" novalidate>
+      <form class="logInForm" [formGroup]="loginForm" (submit)="loginSubmit(loginForm)" novalidate>
           <mat-form-field>
             <input class="h5" matInput placeholder="email" formControlName="email">
           </mat-form-field>
@@ -25,7 +25,3 @@
     </div>
   </div>
   
-  
-
-
-

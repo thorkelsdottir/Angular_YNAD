@@ -12,7 +12,7 @@
           <div>
               <button class="btnLight" routerLink="log-in" *ngIf="!authService.isLoggedIn">Log In </button>
               <button class="btnDark" routerLink="sign-up" *ngIf="!authService.isLoggedIn">Sign Up </button>
-              <button mat-button routerLink="admin" *ngIf="authService.isLoggedIn">Welcome User</button>
+              <button class="btnNone btnWelcome" mat-button routerLink="admin" *ngIf="authService.isLoggedIn">Welcome</button>
           </div>
     </div>
 
