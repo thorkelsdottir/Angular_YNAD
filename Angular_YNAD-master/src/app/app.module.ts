@@ -100,7 +100,7 @@ import { FilterArrayPipe } from './admin/all-users/filter.pipe';
     CrudService, 
     SearchService,
     UsersActions,
-    UsersEpic, 
+    UsersEpic,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: {}}, 
     {provide: MatDialogRef, useValue: {}}

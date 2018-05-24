@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeletePieceModalComponent } from './delete-piece-modal.component';
+// import { DeletePieceModalComponent } from './delete-piece-modal.component';
 
-describe('DeletePieceModalComponent', () => {
-  let component: DeletePieceModalComponent;
-  let fixture: ComponentFixture<DeletePieceModalComponent>;
+// describe('DeletePieceModalComponent', () => {
+//   let component: DeletePieceModalComponent;
+//   let fixture: ComponentFixture<DeletePieceModalComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DeletePieceModalComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ DeletePieceModalComponent ]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DeletePieceModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(DeletePieceModalComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

@@ -9,7 +9,7 @@
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
 //       declarations: [ MyProfileComponent ]
-//     })
+//         })
 //     .compileComponents();
 //   }));
 
