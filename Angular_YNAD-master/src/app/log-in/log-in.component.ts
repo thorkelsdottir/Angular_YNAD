@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { PasswordValidator } from '../PasswordValidator';
+import { PasswordValidator } from '../passwordValidator';
 
 @Component({
   selector: 'app-log-in',
