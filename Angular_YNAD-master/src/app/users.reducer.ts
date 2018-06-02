@@ -33,17 +33,13 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action: any) {
     //     return newDeletedState;
     //   }
     // })
-    
-    console.log(newDeletedState);
-   
     // console.log(newDeletedState);
     return tassign(state, {piece: newDeletedState});
   case UsersActions.DELETE_PIECES_ERROR:
     //console.log(action.payload);
     return state;
 
-
-
+    
     default:
     return state;
   }

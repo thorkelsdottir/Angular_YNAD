@@ -23,39 +23,27 @@ db.connect(err => {
     console.log('Connected');
 })
 
-
-// //read/select from database all users
-// db.query( 'SELECT * FROM users', (err, ajData ) =>{
-//     console.log(ajData);
-// })
-
-// //read/select from database all PIECES
-// db.query( 'SELECT * FROM pieces', (err, ajData ) =>{
-//     console.log(ajData);
-// })
-
 // Add headers
 app.use(function (req, res, next) {
-
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*')
+     res.setHeader('Access-Control-Allow-Origin', '*')
   
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, x-access-token');
+     res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, x-access-token');
   
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+     res.setHeader('Access-Control-Allow-Credentials', true);
     // Pass to next layer of middleware
-    next() 
+     next();
   }); 
 
 //Getting data from users
 app.get("/user-api", (req, res)=> {
-        // res.json([{id:1},{id:2}])
+    try{
     var stmt = 'SELECT * FROM users';
     db.query(stmt, (err, ajData)=>{
         // console.log(ajData); 
@@ -65,6 +53,9 @@ app.get("/user-api", (req, res)=> {
             }
         return res.json(ajData);
     });
+    } catch(err) {
+        console.log(err.message);
+    }
 })
 
 //Getting data from pieces
@@ -81,7 +72,6 @@ app.get("/pieces-api", (req, res)=> {
     } catch(err) {
         console.log(err.message);
     }
-    
 })
 
 
@@ -118,11 +108,11 @@ app.post("/save-user", function(req, res) {
                 }
                 if(jData.affectedRows == 1){
                     console.log('great, a new JSON user inserted');
-                    return res.send(jData)
+                    return res.send(jData);
                 }
             })
       } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
       }
 })
 
@@ -145,12 +135,11 @@ app.post("/update-user", function(req, res) {
                 }
                 if(jData.affectedRows == 1){
                     console.log('a user has been updated');
-                    return res.send('success')
+                    return res.send('success');
                 }
             })
-
       } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
       }
 })
 
@@ -160,8 +149,7 @@ app.post("/save-piece", function(req, res) {
     try {
          // console.log("nú loggast value-in:");
             var piece = req.fields
-            console.log(piece)
-
+            // console.log(piece)
             // Insert a piece into database
             var jPiece = {
                 title: piece.title,
@@ -183,30 +171,29 @@ app.post("/save-piece", function(req, res) {
                     return res.send(err);
                 }
                 if(jData.affectedRows == 1){
-                    console.log('great, a new JSON piece inserted');
-                    return res.send(jData)
+                    // console.log('great, a new JSON piece inserted');
+                    return res.send(jData);
                 }
             })
       } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
       }
 })
 
 ////delete piece from database
 app.get('/delete-from-api/:idpieces', (req, res)=> {
-    // console.log(req.params.idpieces)
+    try {
+        // console.log(req.params.idpieces)
     var idpieces = req.params.idpieces;
     var stmt = 'DELETE FROM pieces WHERE idpieces = ?'
     db.query(stmt, idpieces, (err, ajData) => {
-        return res.send(ajData)
-        // if(jData.affectedRows == 1){
-        //     console.log('deleted');
-        //     //should be a reload here
-        // }
+        return res.send(ajData);
     }) 
+    } catch(err) {
+        console.log(err.message);
+    }
+    
 })
-
-
 
 //Listening to port
 var port = 1983

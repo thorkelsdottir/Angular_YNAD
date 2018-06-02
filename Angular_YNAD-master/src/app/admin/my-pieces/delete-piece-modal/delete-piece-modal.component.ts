@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Input } from '@angular/core';
+import { Component, Inject, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { CrudService } from '../../../crud.service';
 import { PiecesServiceService } from '../../../pieces-service.service';
@@ -15,12 +15,16 @@ import { IAppState } from '../../../store/store';
   styleUrls: ['./delete-piece-modal.component.scss']
 })
 export class DeletePieceModalComponent {
-  @Input() data: any;
+  //passing in all the pieces data from parent component
   pieces = [];
+  @Input() data: string;
+  // @Output('getData') getData = new EventEmitter<string>();
+  // saveData() {
+  //   this.getData.emit(this.data)
+  //   }
   constructor(public dialog: MatDialog, private pieceservice: PiecesServiceService, private usersActions: UsersActions, private ngRedux: NgRedux<IAppState>) {}
 
   openDialog(data): void {
-    // console.log('x');
     let dialogRef = this.dialog.open(ModalOverlay, {
       width: '250px',
       data: data
@@ -38,15 +42,14 @@ export class DeletePieceModalComponent {
 export class ModalOverlay {
   constructor(
     public dialogRef: MatDialogRef<ModalOverlay>,
-    @Inject(MAT_DIALOG_DATA) public data: any,  private crudservice: CrudService, private usersActions: UsersActions) { }
+    @Inject(MAT_DIALOG_DATA) public data: string,  private crudservice: CrudService, private usersActions: UsersActions) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-
   deletePiece(idpieces) {
-    console.log(idpieces);
+    // console.log(idpieces);
     this.usersActions.deletePiece(idpieces);
     this.dialogRef.close();
   }

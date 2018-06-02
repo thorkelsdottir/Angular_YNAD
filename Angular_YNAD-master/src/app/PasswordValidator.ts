@@ -4,12 +4,10 @@ export class PasswordValidator {
 
   static getPasswordValidator() {
     return function passwordValidator(control: FormControl): { [s: string]: boolean } {
-
-      // Write code here..
-      if (!control.value.match(/^123/)) {
+      // If password value has these values a user can log in
+      if (!control.value.match(/^123/ || /^asd/ )) {
         return {invalidPassword: true};
       }
-
       return null;
     }
   }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { PasswordValidator } from '../PasswordValidator';
 import { CrudService } from '../crud.service';
 
 @Component({
@@ -30,18 +29,17 @@ export class SignUpComponent implements OnInit {
   signUpSubmit(signUpForm) {
     // console.log("is Valid?: " + signUpForm.valid);
     if (signUpForm.valid) {
-      //Save user data via userServiceService      
+      //Save user data via crudService     
       this.crudService.saveNewUser(signUpForm.value)
-      // Send an http request to login
-      // Navigate to the home page (or some other page)
+      //log new user in when signed up
       this.authService.login().subscribe(x => {
-        // Can you naviate to the path the user tried to go to instead of 
-        // always the contact?
-        this.router.navigate(['log-in']);
+         // Navigate to the admin  
+        this.router.navigate(['admin']);
       });
-      console.log(this.signUpForm.value);
+      // console.log(this.signUpForm.value);
     } else {
-      // Display error messages.
+      // Display error message.
+      console.log("Something went wrong in signing up");
     }
    }
 

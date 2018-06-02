@@ -27,18 +27,16 @@ export class AdmitComponent implements OnInit {
 
    admitPieceSubmit(admitPieceForm) {
     if (admitPieceForm.valid) {
-      //Save user data via userServiceService      
+      //Save piece data via crudService      
       this.crudService.saveNewPiece(admitPieceForm.value)
-      // Send an http request to login
-      // Navigate to the home page (or some other page)
       this.authService.login().subscribe(x => {
-        // Can you naviate to the path the user tried to go to instead of 
-        // always the contact?
+        // Navigate to the my-pieces
         this.router.navigate(['./admin/my-pieces']);
       });
-      console.log(this.admitPieceForm.value);
+      // console.log(this.admitPieceForm.value);
     } else {
-      // Display error messages.
+      // Display error message
+      console.log("Something went wrong in admitting a piece");
     }
    }
 

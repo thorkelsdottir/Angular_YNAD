@@ -12,29 +12,25 @@ import { PasswordValidator } from '../passwordValidator';
 
 export class LogInComponent implements OnInit {
   loginForm: FormGroup;
-    
+
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
   };
 
   loginSubmit(loginForm) {
     // console.log("is Valid?: " + loginForm.valid);
-
-    if (loginForm.valid) {
-      // Send an http request to login
-      // Navigate to the home page (or some other page)
+    if (loginForm.valid) { 
       this.authService.login().subscribe(x => {
-        // Can you naviate to the path the user tried to go to instead of 
-        // always the contact?
+        // If login is successful than navigate to the admin page
         this.router.navigate(['admin']);
       });
-      
     } else {
-      // Display error messages.
+      // Display error message.
+      console.log("Something went wrong in the login");
     }
-    // console.log("Hi there!");
    }
 
   ngOnInit() {
+    //Declairing everything that is inside the log in form
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', 
@@ -45,5 +41,4 @@ export class LogInComponent implements OnInit {
       )]
     });
   }
-
 }

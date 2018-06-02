@@ -1,8 +1,8 @@
 <section class="my-pieces-table">
         <div class="piece-search">
-                <h2>Search through your pieces</h2>
-              <input id="myPieceSearchInput" type="text" placeholder="Search for piece" >
-            </div>
+            <h2>Search through your pieces</h2>
+            <input id="myPieceSearchInput" type="text" placeholder="Search for piece" >
+        </div>
     <div class="pieces-table">
         <table>
             <tr>
@@ -71,9 +71,8 @@
                     </div>
                 </td>
                 <td>
-    
-                <app-delete-piece-modal [data]="piece"></app-delete-piece-modal>
-
+                    <app-delete-piece-modal [data]="piece"></app-delete-piece-modal>
+                    <!-- <app-delete-piece-modal (getData)= "saveData($event)" [data]="piece"></app-delete-piece-modal> -->
                 </td>
             </tr>
           

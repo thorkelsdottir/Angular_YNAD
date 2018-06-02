@@ -15,7 +15,6 @@ export class PiecesServiceService {
     };
   }
   displayAllPieces(): Observable<any> {
-    // console.log("this is reading the displayAllPieces in piecesServiceService");
     return this.http.get('http://localhost:1983/pieces-api', { responseType: 'json' } );
   } 
 

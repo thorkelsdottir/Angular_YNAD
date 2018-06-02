@@ -7,9 +7,8 @@ import { AuthService } from '../auth.service'
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  // update with your regular way of checking whether the user is logged in
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

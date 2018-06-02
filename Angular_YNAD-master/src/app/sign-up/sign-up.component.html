@@ -18,7 +18,7 @@
               <input class="h5" matInput placeholder="Enter email" autocomplete="email" email formControlName="email">
             </mat-form-field>
             <div *ngIf="signUpForm.controls.email.errors?.required && signUpForm.controls.email.touched">
-              <!-- Please fill out a valid email -->
+              You must fill out a valid email
             </div>
                     
             <mat-form-field>
@@ -62,9 +62,7 @@
    
         <!--  <p>Form value: {{ signUpForm.value | json }}</p>
               <p>Form status: {{ signUpForm.status | json }}</p>  -->
-                
-            <!-- [disabled]="loginForm.invalid" -->
-            
+                            
         <button class="btnDark" type="submit" >Sign Up</button>
   
       </form>

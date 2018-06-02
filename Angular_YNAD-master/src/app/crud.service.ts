@@ -5,9 +5,11 @@ import 'rxjs/add/operator/map';
 import { RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+//gives access, lets Angular know that a class can be used with the dependency injector.
 @Injectable()
-export class CrudService {
 
+//Api's talking to our server
+export class CrudService {
   constructor(private http: HttpClient) { }
 
   saveNewUser(user) {
@@ -20,7 +22,6 @@ export class CrudService {
     return this.http.post(url, newUserInfo, { responseType: 'json' } ).subscribe();
   }
  
-4
   saveNewPiece(piece) {
     const url ='http://localhost:1983/save-piece';
     return this.http.post(url, piece, { responseType: 'json' } ).subscribe();
