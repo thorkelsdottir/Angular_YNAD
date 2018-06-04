@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyProfileComponent } from '../my-profile/my-profile.component';
-import { PiecesServiceService } from '../../pieces-service.service';
-import { CrudService } from '../../crud.service';
+// import { CrudService } from '../../crud.service';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { UsersActions } from '../../users.actions';
@@ -21,7 +20,7 @@ export class MyPiecesComponent implements OnInit {
   pieces: any[];
   data = '';
 	
-  constructor(private usersAction: UsersActions, private ngRedux: NgRedux<IAppState>, public dialog: MatDialog, private router: Router, private pieceservice: PiecesServiceService, private crudservice: CrudService) { }
+  constructor(private usersAction: UsersActions, private ngRedux: NgRedux<IAppState>, public dialog: MatDialog, private router: Router) { }
 
   //for the input
   saveData(data) {
@@ -34,7 +33,6 @@ export class MyPiecesComponent implements OnInit {
       // console.log(piece);
       this.pieces = users.piece;
       // console.log(this.pieces);
-      
     })
   }
 

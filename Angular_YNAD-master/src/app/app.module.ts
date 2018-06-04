@@ -45,8 +45,6 @@ import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 
 //Services
-import { UserServiceService } from './user-service.service';
-import { PiecesServiceService } from './pieces-service.service';
 import { CrudService } from './crud.service';
 
 //Http
@@ -111,8 +109,6 @@ import { ShopComponent } from './shop/shop.component';
   providers: [
     AuthGuardService, 
     AuthService, 
-    UserServiceService, 
-    PiecesServiceService, 
     CrudService, 
     UsersActions,
     UsersEpic,

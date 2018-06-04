@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
-import { CrudService } from '../../../crud.service';
-import { PiecesServiceService } from '../../../pieces-service.service';
+// import { CrudService } from '../../../crud.service';
 import { Subject } from 'rxjs/Subject';
 import { UsersActions } from '../../../users.actions';
 import { NgRedux } from '@angular-redux/store';
@@ -22,7 +21,7 @@ export class DeletePieceModalComponent {
   // saveData() {
   //   this.getData.emit(this.data)
   //   }
-  constructor(public dialog: MatDialog, private pieceservice: PiecesServiceService, private usersActions: UsersActions, private ngRedux: NgRedux<IAppState>) {}
+  constructor(public dialog: MatDialog, private usersActions: UsersActions, private ngRedux: NgRedux<IAppState>) {}
 
   openDialog(data): void {
     let dialogRef = this.dialog.open(ModalOverlay, {
@@ -42,7 +41,7 @@ export class DeletePieceModalComponent {
 export class ModalOverlay {
   constructor(
     public dialogRef: MatDialogRef<ModalOverlay>,
-    @Inject(MAT_DIALOG_DATA) public data: string,  private crudservice: CrudService, private usersActions: UsersActions) { }
+    @Inject(MAT_DIALOG_DATA) public data: string, private usersActions: UsersActions) { }
 
   onNoClick(): void {
     this.dialogRef.close();

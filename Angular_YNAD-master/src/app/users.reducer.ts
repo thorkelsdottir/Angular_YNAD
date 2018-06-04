@@ -1,10 +1,10 @@
 import { UsersActions } from './users.actions';
 import { UsersState } from './store/store';
 import { tassign } from 'tassign';
-import { PiecesServiceService } from './pieces-service.service';
+import { CrudService } from './crud.service';
 
 
-const INITIAL_STATE: UsersState = PiecesServiceService.getInitialPieceState();
+const INITIAL_STATE: UsersState = CrudService.getInitialPieceState();
 
 export function usersReducer(state: UsersState = INITIAL_STATE, action: any) {
  switch (action.type) {

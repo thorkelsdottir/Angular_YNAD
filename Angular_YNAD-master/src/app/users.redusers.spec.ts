@@ -10,11 +10,11 @@ describe('users reducer', () => {
             title: 'Piece Titile',
             material: 'painting',
             description: 'Some description of the piece',
-            size: 'Piece Titile',
-            price: 'Piece Titile',
+            size: '23 x 34 cm',
+            price: '866$',
             status_idstatus: 1,
             year_idyear: 4,
-            piece_image: 'Piece Titile',
+            piece_image: 'url..',
             users_idusers: 5,
             media_idmedia: 6 
         }

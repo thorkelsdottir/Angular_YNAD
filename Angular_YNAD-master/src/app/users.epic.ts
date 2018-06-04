@@ -6,19 +6,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import { AuthService } from "./auth.service";
 import { UsersActions } from "./users.actions";
-import { PiecesServiceService } from "./pieces-service.service";
 import { ActionsObservable } from "redux-observable";
 import { CrudService } from "./crud.service";
 
 @Injectable()
 export class UsersEpic { 
-  constructor(private piecesService: PiecesServiceService, private crudservice: CrudService ) { }
+  constructor(private crudservice: CrudService ) { }
 
 ///getting all pieces
   getAllPieces = (action$: ActionsObservable<any>) => {
     // console.log("this is reading the epic getAllPieces");
     return action$.ofType(UsersActions.GET_ALL_PIECES).mergeMap(({ payload }) => {
-        return this.piecesService.displayAllPieces().map((result: any[]) => ({
+        return this.crudservice.displayAllPieces().map((result: any[]) => ({
             type: UsersActions.GET_ALL_PIECES_SUCCESS,
             payload: result
           })).catch(error => Observable.of({
