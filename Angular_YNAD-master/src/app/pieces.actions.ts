@@ -3,7 +3,7 @@ import { NgRedux } from '@angular-redux/store';
 import { IAppState } from './store/store';
 
 @Injectable()
-export class UsersActions {
+export class PiecesActions {
  
   constructor (
    private ngRedux: NgRedux<IAppState>) {}
@@ -18,13 +18,13 @@ export class UsersActions {
 
    getAllPieces() {
     this.ngRedux.dispatch({
-      type: UsersActions.GET_ALL_PIECES
+      type: PiecesActions.GET_ALL_PIECES
     })
   }
 
   deletePiece(id) {
     this.ngRedux.dispatch({
-      type: UsersActions.DELETE_PIECES,
+      type: PiecesActions.DELETE_PIECES,
       payload: id
     })
   }

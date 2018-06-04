@@ -1,17 +1,17 @@
 import { routerReducer } from '@angular-redux/router';
 import { combineReducers } from 'redux';
-import { usersReducer } from './../users.reducer';
+import { piecesReducer } from './../pieces.reducer';
 
 
-export class UsersState {
+export class PiecesState {
     piece: any[];
 }
 export class IAppState {
- users?: UsersState;
+ pieces?: PiecesState;
 }
 
 export const rootReducer = combineReducers<IAppState>({
- users: usersReducer,
+pieces: piecesReducer,
  // when you add more reducers, add them here..
  router: routerReducer
 });

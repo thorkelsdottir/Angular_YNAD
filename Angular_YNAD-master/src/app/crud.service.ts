@@ -4,7 +4,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import { RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { UsersState } from './store/store';
+import { PiecesState } from './store/store';
 
 
 //gives access, lets Angular know that a class can be used with the dependency injector.
@@ -31,7 +31,7 @@ export class CrudService {
  
 
   //for our pieces
-  static getInitialPieceState(): UsersState {
+  static getInitialPieceState(): PiecesState {
     return {
       piece: []
     };

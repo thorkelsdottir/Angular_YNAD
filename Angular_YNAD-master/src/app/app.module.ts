@@ -55,9 +55,9 @@ import { HttpModule } from '@angular/http';
 import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
 import { IAppState, rootReducer } from './store/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { UsersActions } from './users.actions';
+import { PiecesActions } from './pieces.actions';
 import { RouterModule } from '@angular/router';
-import { UsersEpic } from './users.epic';
+import { PiecesEpic } from './pieces.epic';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { createLogger } from 'redux-logger';
 import { ShopComponent } from './shop/shop.component';
@@ -111,8 +111,8 @@ import { ShopComponent } from './shop/shop.component';
     AuthGuardService, 
     AuthService, 
     CrudService, 
-    UsersActions,
-    UsersEpic,
+    PiecesActions,
+    PiecesEpic,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MAT_DIALOG_DATA, useValue: {}}, 
     {provide: MatDialogRef, useValue: {}}
@@ -124,11 +124,11 @@ export class AppModule {
     private ngRedux: NgRedux<IAppState>,
     private devTool: DevToolsExtension,
     private ngReduxRouter: NgReduxRouter,
-    private usersEpic: UsersEpic
+    private piecesEpic: PiecesEpic
   ) {
     const rootEpic = combineEpics( 
-      this.usersEpic.getAllPieces,
-      this.usersEpic.deleteFromPieces
+      this.piecesEpic.getAllPieces,
+      this.piecesEpic.deleteFromPieces
     );
     const middleware = [
       createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })

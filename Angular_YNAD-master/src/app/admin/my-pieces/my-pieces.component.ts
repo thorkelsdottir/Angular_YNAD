@@ -3,7 +3,7 @@ import { MyProfileComponent } from '../my-profile/my-profile.component';
 // import { CrudService } from '../../crud.service';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { UsersActions } from '../../users.actions';
+import { PiecesActions } from '../../pieces.actions';
 import { Subscription } from 'rxjs';
 import { IAppState } from '../../store/store';
 import { NgRedux } from '@angular-redux/store';
@@ -20,7 +20,7 @@ export class MyPiecesComponent implements OnInit {
   pieces: any[];
   data = '';
 	
-  constructor(private usersAction: UsersActions, private ngRedux: NgRedux<IAppState>, public dialog: MatDialog, private router: Router) { }
+  constructor(private piecesAction: PiecesActions, private ngRedux: NgRedux<IAppState>, public dialog: MatDialog, private router: Router) { }
 
   //for the input
   saveData(data) {
@@ -28,10 +28,10 @@ export class MyPiecesComponent implements OnInit {
     }	
 
   ngOnInit() {
-    this.usersAction.getAllPieces();
-    this.subscription = this.ngRedux.select(state => state.users).subscribe(users => {
+    this.piecesAction.getAllPieces();
+    this.subscription = this.ngRedux.select(state => state.pieces).subscribe(pieces => {
       // console.log(piece);
-      this.pieces = users.piece;
+      this.pieces = pieces.piece;
       // console.log(this.pieces);
     })
   }

@@ -1,8 +1,8 @@
 var deepFreeze = require('deep-freeze');
-import * as types from './users.actions';
-import { UsersActions } from './users.actions';
+import * as types from './pieces.actions';
+import { PiecesActions } from './pieces.actions';
 
-describe('users reducer', () => {
+describe('pieces reducer', () => {
     it('should display the state of all the pieces', () => {
         // create the initial state object
         const initialState = {
