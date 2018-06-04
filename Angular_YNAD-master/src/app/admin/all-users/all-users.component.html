@@ -8,13 +8,16 @@
   </div>
   <div class="user-list">
     <div *ngFor="let user of users | filter: filterName" class="eachUser divWhiteBox">
-      <h3>{{user.firstname}} {{user.lastname}}</h3>
+      <div class="profileImg">
+          <img  src="{{user.profile_image}}" alt="">
+      </div>
+      <h3>{{user.firstname}} {{user.lastname}} - <span> {{user.profession}}</span></h3>
       <p>{{user.email}}</p>
       <p>Phone number: {{user.phone_number}}</p>
       <!-- <p >{{user.description}}</p> -->
       <p>Social Media</p>
-        <a href="{{user.facebook_url}}"><img src="assets/icon/facebook.svg" alt="facebook"></a> 
-        <a href="{{user.twitter_url}}"><img src="assets/icon/instagram.svg" alt="instagram"></a>
+      <a class="facebookIcon" href="{{user.facebook_url}}"><img src="assets/icon/facebook.svg" alt="facebook"></a> 
+      <a href="{{user.twitter_url}}"><img src="assets/icon/instagram.svg" alt="instagram"></a>
     </div>
   </div>
 </section>

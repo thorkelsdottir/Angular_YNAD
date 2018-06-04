@@ -86,7 +86,7 @@ app.post("/save-user", function(req, res) {
             var jUser = {
                 firstname: user.firstname,
                 lastname: user.lastname,
-                profession: user.password,
+                profession: user.profession,
                 description: user.description,
                 email: user.email,
                 password: user.password,

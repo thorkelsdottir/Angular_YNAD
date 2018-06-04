@@ -5,25 +5,25 @@
           <div class="front-artist-intro">
               <div class="front-artist-info">
                   <h1>{{user.firstname}} {{user.lastname}}</h1>
-                  <h2>{{user.profession}} - Copenhagen, Denmark</h2>
+                  <h2 class="userProfession">{{user.profession}} - Copenhagen, Denmark</h2>
                   <p>{{user.description}}</p>
               </div>
               <div class="front-artist-images"><img src="{{user.profile_image}}"></div>
           </div>
           <div class="user-social">
-                <a href="{{user.facebook_url}}"><img src="/assets/icon/facebook.svg" alt="facebook"></a>
-                <a href="{{user.twitter_url}}"><img src="/assets/icon/instagram.svg" alt="instagram"></a>
-                <a href="{{user.instagram_url}}"><img src="/assets/icon/twitter.svg" alt="twitter"></a>
+                <a href="{{user.facebook_url}}" target="_blank"><img src="/assets/icon/facebook.svg" alt="facebook"></a>
+                <a href="{{user.instagram_url}}" target="_blank"><img src="/assets/icon/instagram.svg" alt="instagram"></a>
+                <a href="{{user.twitter_url}}" target="_blank"><img src="/assets/icon/twitter.svg" alt="twitter"></a>
           </div>
           <div class="user-info">
               <div class="user-email-phone">
                   <div class="user-email">
                       <img src="/assets/icon/email.svg" alt="email">
-                      <a class="p" href="mailto:{{user.email}}">{{user.email}}</a>
+                      <a class="p" href="mailto:{{user.email}}" target="_blank">{{user.email}}</a>
                   </div>
                   <div class="user-phone">
                       <img src="/assets/icon/phone.svg" alt="phone">
-                      <a class="p" href="tel:{{user.phone_number}}">{{user.phone_number}}</a>
+                      <a class="p" href="tel:{{user.phone_number}}" target="_blank">{{user.phone_number}}</a>
                   </div>
               </div>
                 <div *ngIf="authService.isLoggedIn" >

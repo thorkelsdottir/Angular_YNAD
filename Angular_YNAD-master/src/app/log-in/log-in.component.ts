@@ -3,6 +3,8 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PasswordValidator } from '../passwordValidator';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-log-in',
@@ -11,8 +13,8 @@ import { PasswordValidator } from '../passwordValidator';
 })
 
 export class LogInComponent implements OnInit {
+  hide = true;
   loginForm: FormGroup;
-
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
   };
 

@@ -3,6 +3,8 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CrudService } from '../crud.service';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -10,6 +12,7 @@ import { CrudService } from '../crud.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  hide = true;
   signUpForm: FormGroup;
   profileImageUrl = "/assets/icon/imagePlaceholder.jpg";
 
@@ -56,7 +59,7 @@ export class SignUpComponent implements OnInit {
       facebook_url: [''],
       instagram_url: [''],
       twitter_url: [''],
-      profileimage: ['']
+      profile_image: ['']
     });
   }
 

@@ -7,13 +7,14 @@
       </div>
       <form class="logInForm" [formGroup]="loginForm" (submit)="loginSubmit(loginForm)" novalidate>
           <mat-form-field>
-            <input class="h5" matInput placeholder="email" formControlName="email">
+            <input class="h5" matInput placeholder="email" autocomplete="email" email formControlName="email">
           </mat-form-field>
-          <div *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.touched">
+          <div *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
             You must fill out a valid email
           </div>
           <mat-form-field>
-            <input class="h5" matInput placeholder="password" formControlName="password">
+            <input matInput class="h5" placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
           </mat-form-field>
         <!--     
           <p>Form value: {{ loginForm.value | json }}</p>
