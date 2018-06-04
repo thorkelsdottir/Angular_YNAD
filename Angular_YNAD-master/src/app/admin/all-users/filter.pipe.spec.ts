@@ -21,7 +21,7 @@ describe('App: Users', () => {
   });
 
     describe('FilterUsers', () => {
-        // asigning the pipe to the FilterArrayPipe
+        // assigning the pipe to the FilterArrayPipe
       let pipe = new FilterArrayPipe();
       
       // checking if there are 5 users
