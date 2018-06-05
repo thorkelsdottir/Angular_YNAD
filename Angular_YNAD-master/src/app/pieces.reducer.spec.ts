@@ -1,6 +1,8 @@
 var deepFreeze = require('deep-freeze');
-import * as types from './pieces.actions';
 import { PiecesActions } from './pieces.actions';
+import * as types from './pieces.actions';
+import { piecesReducer } from './pieces.reducer';
+
 
 describe('pieces reducer', () => {
     it('should display the state of all the pieces', () => {
@@ -18,30 +20,17 @@ describe('pieces reducer', () => {
             users_idusers: 5,
             media_idmedia: 6 
         }
+        // const action = {type: types.GET_ALL_PIECES, todo: {
+
+        // }}
         // perform a deepFreeze on the initial state object
         deepFreeze(initialState);
         //console.log(initialState);
         // create the piece payload
         // Send the action to the reducer
-        //const afterState = {... initialState};
-        //let afterState = [2]
+        // let payload = piecesReducer(state: PiecesState = INITIAL_STATE, action: any)
+        // let afterState = {... initialState};
         // Verify the changes are correct
         //expect( usersReducer(afterState, { type: types.UsersActions.GET_ALL_PIECES_SUCCESS})).toEqual({payload: true});
       });
 });
-
-// from babysitter app
-// var deepFreeze = require('deep-freeze');
-// import { usersReducer } from './users.reducer';
-// import * as types from './users.actions';
-
-// describe('users reducer', () => {
-//     it('should return the initial state', () => {
-//     expect(usersReducer(undefined, {})).toEqual({isBaby: undefined});
-//     });
-//     it('Toggle isBaby or sitter', () => {
-//     let state = {isBaby: undefined};
-//     deepFreeze(state);
-//     expect( usersReducer(state, { type: types.UsersActions.SET_TYPE, payload: true })).toEqual({isBaby: true});
-//     });
-// });

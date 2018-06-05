@@ -10,7 +10,6 @@ import { CrudService } from '../../crud.service';
 @Injectable()
 export class AllUsersComponent implements OnInit {
   users = [];
-
   constructor(private crudService: CrudService ) {};
 
   ngOnInit() {
